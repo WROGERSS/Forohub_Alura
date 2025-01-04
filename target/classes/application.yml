@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: forohub
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST}/${DB_NAME:forohub_db}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    locations: classpath:migration # Ubicación de las migraciones
+    enabled: true # Habilitar Flyway
+    baseline-on-migrate: true # Baseline si ya existen datos en la base de datos
+
+server:
+  error:
+    include-stacktrace: never
+jwt:
+  secret: ${JWT_SECRET:default_secret}
+  expiration: 72 # Activación del token en horas
