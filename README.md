@@ -15,19 +15,19 @@ Esta API REST proporciona servicios para gestionar usuarios, cursos,  tópicos r
 
 # Tecnologías
 
- -Java 21
- -DevTools para desarrollo
- -Spring Boot
- -Spring Data JPA
- -Spring Security
- -Spring Validation
- -Spring Web
- -Spring Boot Test y Spring Security Test para pruebas
- -Flyway para migraciones de base de datos
- -MySQL Connector/J
- -Lombok para generación automática de código
- -Auth0 Java JWT para manejo de tokens 
- -Springdoc OpenAPI para documentación de API con Swagger UI
+ - Java SDK 21
+ - DevTools para desarrollo
+ - Spring Boot
+ - Spring Data JPA
+ - Spring Security
+ - Spring Validation
+ - Spring Web
+ - Spring Boot Test y Spring Security Test para pruebas
+ - Flyway para migraciones de base de datos
+ - MySQL Connector/J
+ - Lombok para generación automática de código
+ - Auth0 Java JWT para manejo de tokens 
+ - Springdoc OpenAPI para documentación de API con Swagger UI
 
 # Requisitos Previos
 
