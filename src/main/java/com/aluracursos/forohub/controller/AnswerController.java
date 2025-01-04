@@ -32,7 +32,7 @@ public class AnswerController {
         this.respuestaService = respuestaService;
     }
 
-    @Operation(summary = "Crear una nueva respuesta", description = "Crea una nueva respuesta en el sistema.")
+    @Operation(summary = "Crear una nueva respuesta", description = "Crea una nueva respuesta en el Foro.")
     @PostMapping
     public ResponseEntity<ReplyAnswerDTO> crearRespuesta(@RequestBody @Valid RegisterAnswerDTO datos, UriComponentsBuilder uriComponentsBuilder) {
         ReplyAnswerDTO response = respuestaService.registrarRespuesta(datos);
@@ -40,14 +40,14 @@ public class AnswerController {
         return ResponseEntity.created(uri).body(response);
     }
 
-    @Operation(summary = "Listar todas las respuestas", description = "Devuelve una lista paginada de todas las respuestas disponibles.")
+    @Operation(summary = "Listar todas las respuestas", description = "Devuelve una lista de todas las respuestas disponibles.")
     @GetMapping
     public ResponseEntity<Page<ReplyAnswerDTO>> listarRespuestas(@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable paginacion) {
         Page<ReplyAnswerDTO> page = respuestaService.listarRespuestas(paginacion);
         return ResponseEntity.ok(page);
     }
 
-    @Operation(summary = "Obtener una respuesta por ID", description = "Devuelve una respuesta basada en el ID proporcionado.")
+    @Operation(summary = "Obtener una respuesta por ID", description = "Devuelve una respuesta basada en un ID proporcionado.")
     @GetMapping("/{id}")
     public ResponseEntity<ReplyAnswerDTO> obtenerRespuestaPorId(@PathVariable Long id) {
         ReplyAnswerDTO respuesta = respuestaService.getRespuestaPorId(id);

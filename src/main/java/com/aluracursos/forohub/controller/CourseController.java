@@ -33,7 +33,7 @@ public class CourseController {
         this.cursoService = cursoService;
     }
 
-    @Operation(summary = "Crear un nuevo curso", description = "Crea un nuevo curso en el sistema.")
+    @Operation(summary = "Crear un nuevo curso", description = "Crea un nuevo curso en el Foro.")
     @PostMapping
     public ResponseEntity<AnswerCourseDTO> crearCurso(@RequestBody @Valid RegisterCourseDTO datos, UriComponentsBuilder uriComponentsBuilder) {
         AnswerCourseDTO response = cursoService.registrarCurso(datos);
@@ -41,14 +41,14 @@ public class CourseController {
         return ResponseEntity.created(uri).body(response);
     }
 
-    @Operation(summary = "Listar todos los cursos", description = "Devuelve una lista paginada de todos los cursos disponibles.")
+    @Operation(summary = "Listar todos los cursos", description = "Devuelve una lista de todos los cursos disponibles.")
     @GetMapping
     public ResponseEntity<Page<AnswerCourseDTO>> listarCursos(@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable paginacion) {
         Page<AnswerCourseDTO> page = cursoService.listarCursos(paginacion);
         return ResponseEntity.ok(page);
     }
 
-    @Operation(summary = "Obtener un curso por ID", description = "Devuelve un curso basado en el ID proporcionado.")
+    @Operation(summary = "Obtener un curso por ID", description = "Devuelve un curso basado en un ID proporcionado.")
     @GetMapping("/{id}")
     public ResponseEntity<AnswerCourseDTO> obtenerCursoPorId(@PathVariable Long id) {
         AnswerCourseDTO response = cursoService.getCursoPorId(id);

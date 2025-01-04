@@ -32,7 +32,7 @@ public class UserController {
         this.service = service;
     }
 
-    @Operation(summary = "Registrar un nuevo usuario", description = "Crea un nuevo usuario en el sistema.")
+    @Operation(summary = "Registrar un nuevo usuario", description = "Crea un nuevo usuario en el Foro.")
     @PostMapping
     public ResponseEntity<AnswerUserDTO> crearUsuario(@RequestBody @Valid RegisterUserDTO datos, UriComponentsBuilder uriComponentsBuilder) {
         AnswerUserDTO response = service.registrarUsuario(datos);
@@ -40,14 +40,14 @@ public class UserController {
         return ResponseEntity.created(uri).body(response);
     }
 
-    @Operation(summary = "Listar todos los usuarios", description = "Devuelve una lista paginada de todos los usuarios registrados.")
+    @Operation(summary = "Listar todos los usuarios", description = "Devuelve una lista de todos los usuarios registrados.")
     @GetMapping
     public ResponseEntity<Page<AnswerUserDTO>> listarUsuarios(@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable paginacion) {
         Page page = service.listarUsuarios(paginacion);
         return ResponseEntity.ok(page);
     }
 
-    @Operation(summary = "Obtener un usuario por ID", description = "Devuelve un usuario basado en el ID proporcionado.")
+    @Operation(summary = "Obtener un usuario por ID", description = "Devuelve un usuario basado en un ID proporcionado.")
     @GetMapping("/{id}")
     public ResponseEntity<AnswerUserDTO> obtenerUsuarioPorId(@PathVariable Long id) {
         AnswerUserDTO response = service.getUsuarioPorId(id);

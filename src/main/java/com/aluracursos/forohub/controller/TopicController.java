@@ -31,7 +31,7 @@ public class TopicController {
         this.service = service;
     }
 
-    @Operation(summary = "Registrar un nuevo tópico", description = "Crea un nuevo tópico en el sistema.")
+    @Operation(summary = "Registrar un nuevo tópico", description = "Crea un nuevo tópico en el Foro.")
     @PostMapping
     public ResponseEntity<TopicAnswerDTO> registrarTopico(@RequestBody @Valid RegisterTopicDTO datos, UriComponentsBuilder uriComponentsBuilder) {
         TopicAnswerDTO response = service.registrarTopico(datos);
@@ -39,14 +39,14 @@ public class TopicController {
         return ResponseEntity.created(uri).body(response);
     }
 
-    @Operation(summary = "Listar todos los tópicos", description = "Devuelve una lista paginada de todos los tópicos disponibles.")
+    @Operation(summary = "Listar todos los tópicos", description = "Devuelve una lista de todos los tópicos disponibles.")
     @GetMapping
     public ResponseEntity<Page<LongTopicAnswerDTO>> listarConsultas(@PageableDefault(size = 10, sort = "fechaCreacion", direction = Sort.Direction.ASC) Pageable paginacion) {
         Page page = service.listaTopicos(paginacion);
         return ResponseEntity.ok(page);
     }
 
-    @Operation(summary = "Obtener un tópico por ID", description = "Devuelve un tópico basado en el ID proporcionado.")
+    @Operation(summary = "Obtener un tópico por ID", description = "Devuelve un tópico basado en un ID proporcionado.")
     @GetMapping("/{id}")
     public ResponseEntity<LongTopicAnswerDTO> obtenerTopicoPorId(@PathVariable Long id) {
         LongTopicAnswerDTO response = service.getTopicoPorId(id);
@@ -60,7 +60,7 @@ public class TopicController {
         return ResponseEntity.ok(response);
     }
 
-    @Operation(summary = "Eliminar un tópico", description = "Elimina un tópico del sistema.")
+    @Operation(summary = "Eliminar un tópico", description = "Elimina un tópico del Foro.")
     @DeleteMapping("/{id}")
     public ResponseEntity borrarTopico(@PathVariable Long id) {
         service.eliminarTopico(id);
